@@ -15,6 +15,7 @@ public class BasicFXMLController {
 	@FXML
 	private Label label;
 	private TextField texto;
+	
 
 	public void initialize() {
 		// TODO
