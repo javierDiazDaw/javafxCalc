@@ -1,5 +1,6 @@
 package clases;
 
+import java.awt.Button;
 import java.awt.TextField;
 
 import javafx.event.ActionEvent;
@@ -14,7 +15,20 @@ public class BasicFXMLController {
 
 	@FXML
 	private Label label;
-	private TextField texto;
+	@FXML
+	private TextField resultado;
+	@FXML
+	private TextField numero1;
+	@FXML
+	private TextField numero2;
+	@FXML
+	private Button suma;
+	@FXML
+	private Button resta;
+	@FXML
+	private Button multi;
+	@FXML
+	private Button division;
 	
 
 	public void initialize() {
@@ -26,16 +40,21 @@ public class BasicFXMLController {
 //      label.setText("Hello World!");
 
 	@FXML
-	private void muestraPopUp(ActionEvent event) {
-		Stage popUp = new Stage();
-		popUp.initModality(Modality.APPLICATION_MODAL);
-		popUp.setTitle("Pop Up Window");
-
-		Label popMsg = new Label(texto.getText());
-
-		Scene popScene = new Scene(new StackPane(popMsg), 200, 200);
-
-		popUp.setScene(popScene);
-		popUp.show();
+	private void sumar(ActionEvent event) {
+		
+		int num1 = Integer.parseInt(this.numero1.getText());
+		int num2 = Integer.parseInt(this.numero2.getText());
+		
+		
+//		Stage popUp = new Stage();
+//		popUp.initModality(Modality.APPLICATION_MODAL);
+//		popUp.setTitle("Pop Up Window");
+//
+//		Label popMsg = new Label(texto.getText());
+//
+//		Scene popScene = new Scene(new StackPane(popMsg), 200, 200);
+//
+//		popUp.setScene(popScene);
+//		popUp.show();
 	}
 }
