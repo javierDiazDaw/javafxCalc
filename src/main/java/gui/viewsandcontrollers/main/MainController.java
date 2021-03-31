@@ -77,7 +77,9 @@ public class MainController {
 	}
 
 	@FXML
-	private void restar(ActionEvent event2) throws IOException {
+	private void restar(ActionEvent event) throws IOException {
+
+		try {
 
 		double op1 = Double.parseDouble(this.num2.getText());
 		double op2 = Double.parseDouble(this.num2.getText());
@@ -88,10 +90,32 @@ public class MainController {
 
 		this.resul.setText(resultado + "");
 
+		}catch (NumberFormatException e) {
+			System.out.println("Solo se puede introducir valores numéricos");
+			this.resul.setText("ERROR");
+			
+			Stage dialog = new Stage();
+			Node source =(Node) event.getSource();
+			Stage parent = (Stage) source.getScene().getWindow();
+			
+			dialog.initOwner(parent);
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
+			Scene scene = new Scene(root);
+			Label label =(Label)root.getChildrenUnmodifiable().get(0);
+			label.setText("Introduzca solo valores numericos");
+			dialog.setScene(scene);
+			dialog.show();
+			
+
+		}
+
 	}
 	
 	@FXML
 	private void multi(ActionEvent event) throws IOException {
+
+		try{
 
 		double op1 = Double.parseDouble(this.num1.getText());
 		double op2 = Double.parseDouble(this.num2.getText());
@@ -101,10 +125,32 @@ public class MainController {
 		double resultado = m.multi();
 
 		this.resul.setText(resultado + "");
+
+		}catch (NumberFormatException e) {
+			System.out.println("Solo se puede introducir valores numéricos");
+			this.resul.setText("ERROR");
+			
+			Stage dialog = new Stage();
+			Node source =(Node) event.getSource();
+			Stage parent = (Stage) source.getScene().getWindow();
+			
+			dialog.initOwner(parent);
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
+			Scene scene = new Scene(root);
+			Label label =(Label)root.getChildrenUnmodifiable().get(0);
+			label.setText("Introduzca solo valores numericos");
+			dialog.setScene(scene);
+			dialog.show();
+			
+
+		}
 	}
 
 	@FXML
 	private void division(ActionEvent event) throws IOException {
+
+
 
 		double op1 = Double.parseDouble(this.num1.getText());
 		double op2 = Double.parseDouble(this.num2.getText());
