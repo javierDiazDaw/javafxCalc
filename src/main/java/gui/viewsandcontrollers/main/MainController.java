@@ -2,7 +2,6 @@ package gui.viewsandcontrollers.main;
 
 import java.io.IOException;
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,11 +23,9 @@ public class MainController {
 
 	@FXML
 	private TextField num2;
-	
+
 	@FXML
 	private Label resul;
-	
-		
 
 	public void initialize() {
 		// TODO
@@ -38,42 +35,35 @@ public class MainController {
 	private void sumar(ActionEvent event) throws IOException {
 
 		try {
-		
-		double op1 = Double.parseDouble(this.num1.getText());
-		double op2 = Double.parseDouble(this.num2.getText());
 
-		Suma s = new Suma(op1, op2);
+			double op1 = Double.parseDouble(this.num1.getText());
+			double op2 = Double.parseDouble(this.num2.getText());
 
-		double resultado = s.suma();
+			Suma s = new Suma(op1, op2);
 
-		this.resul.setText(resultado + "");
-		
-		}catch (NumberFormatException e) {
+			double resultado = s.suma();
+
+			this.resul.setText(resultado + "");
+
+		} catch (NumberFormatException e) {
 			System.out.println("Solo se puede introducir valores numéricos");
 			this.resul.setText("ERROR");
-			
+
 			Stage dialog = new Stage();
-			Node source =(Node) event.getSource();
+			Node source = (Node) event.getSource();
 			Stage parent = (Stage) source.getScene().getWindow();
-			
+
 			dialog.initOwner(parent);
 			dialog.initModality(Modality.APPLICATION_MODAL);
 			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
 			Scene scene = new Scene(root);
-			Label label =(Label)root.getChildrenUnmodifiable().get(0);
+			Label label = (Label) root.getChildrenUnmodifiable().get(0);
 			label.setText("Introduzca solo valores numericos");
 			dialog.setScene(scene);
 			dialog.show();
-			
 
 		}
-		
-		
-			
-			
-			
-		
-		
+
 	}
 
 	@FXML
@@ -81,68 +71,83 @@ public class MainController {
 
 		try {
 
-		double op1 = Double.parseDouble(this.num2.getText());
-		double op2 = Double.parseDouble(this.num2.getText());
+			double op1 = Double.parseDouble(this.num1.getText());
+			double op2 = Double.parseDouble(this.num2.getText());
 
-		Resta r = new Resta(op1, op2);
+			Resta r = new Resta(op1, op2);
 
-		double resultado = r.resta();
+			double resultado = r.resta();
 
-		this.resul.setText(resultado + "");
+			this.resul.setText(resultado + "");
 
-		}catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Solo se puede introducir valores numéricos");
 			this.resul.setText("ERROR");
-			
+
 			Stage dialog = new Stage();
-			Node source =(Node) event.getSource();
+			Node source = (Node) event.getSource();
 			Stage parent = (Stage) source.getScene().getWindow();
-			
+
 			dialog.initOwner(parent);
 			dialog.initModality(Modality.APPLICATION_MODAL);
 			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
 			Scene scene = new Scene(root);
-			Label label =(Label)root.getChildrenUnmodifiable().get(0);
+			Label label = (Label) root.getChildrenUnmodifiable().get(0);
 			label.setText("Introduzca solo valores numericos");
 			dialog.setScene(scene);
 			dialog.show();
-			
+
+		} catch (ArithmeticException e) {
+			System.out.println("No se puede dividir entre 0");
+			this.resul.setText("ERROR");
+
+			Stage dialog = new Stage();
+			Node source = (Node) event.getSource();
+			Stage parent = (Stage) source.getScene().getWindow();
+
+			dialog.initOwner(parent);
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
+			Scene scene = new Scene(root);
+			Label label = (Label) root.getChildrenUnmodifiable().get(0);
+			label.setText("Introduzca solo valores numericos");
+			dialog.setScene(scene);
+			dialog.show();
 
 		}
 
 	}
-	
+
 	@FXML
 	private void multi(ActionEvent event) throws IOException {
 
-		try{
+		try {
 
-		double op1 = Double.parseDouble(this.num1.getText());
-		double op2 = Double.parseDouble(this.num2.getText());
+			double op1 = Double.parseDouble(this.num1.getText());
+			double op2 = Double.parseDouble(this.num2.getText());
 
-		Multi m = new Multi(op1, op2);
+			Multi m = new Multi(op1, op2);
 
-		double resultado = m.multi();
+			double resultado = m.multi();
 
-		this.resul.setText(resultado + "");
+			this.resul.setText(resultado + "");
 
-		}catch (NumberFormatException e) {
+		} catch (NumberFormatException e) {
 			System.out.println("Solo se puede introducir valores numéricos");
 			this.resul.setText("ERROR");
-			
+
 			Stage dialog = new Stage();
-			Node source =(Node) event.getSource();
+			Node source = (Node) event.getSource();
 			Stage parent = (Stage) source.getScene().getWindow();
-			
+
 			dialog.initOwner(parent);
 			dialog.initModality(Modality.APPLICATION_MODAL);
 			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
 			Scene scene = new Scene(root);
-			Label label =(Label)root.getChildrenUnmodifiable().get(0);
+			Label label = (Label) root.getChildrenUnmodifiable().get(0);
 			label.setText("Introduzca solo valores numericos");
 			dialog.setScene(scene);
 			dialog.show();
-			
 
 		}
 	}
@@ -150,19 +155,41 @@ public class MainController {
 	@FXML
 	private void division(ActionEvent event) throws IOException {
 
+		try {
 
+			double op1 = Double.parseDouble(this.num1.getText());
+			double op2 = Double.parseDouble(this.num2.getText());
 
-		double op1 = Double.parseDouble(this.num1.getText());
-		double op2 = Double.parseDouble(this.num2.getText());
+			Division d = new Division(op1, op2);
 
-		Division d = new Division(op1, op2);
+			double resultado = d.division();
 
-		double resultado = d.division();
+			this.resul.setText(resultado + "");
 
-		this.resul.setText(resultado + "");
+		} catch (NumberFormatException e) {
+			System.out.println("Solo se puede introducir valores numéricos");
+			this.resul.setText("ERROR");
+
+			Stage dialog = new Stage();
+			Node source = (Node) event.getSource();
+			Stage parent = (Stage) source.getScene().getWindow();
+
+			dialog.initOwner(parent);
+			dialog.initModality(Modality.APPLICATION_MODAL);
+			Parent root = FXMLLoader.load(getClass().getResource("../modal/Modal.fxml"));
+			Scene scene = new Scene(root);
+			Label label = (Label) root.getChildrenUnmodifiable().get(0);
+			label.setText("Introduzca solo valores numericos");
+			dialog.setScene(scene);
+			dialog.show();
+
+		} catch (ArithmeticException e) {
+			System.out.println("No se puede dividir entre 0");
+			this.resul.setText("No se puede dividir entre 0");
+
+			}
+
 	}
-	
-	
 
 	public class Suma {
 
@@ -227,7 +254,7 @@ public class MainController {
 		}
 
 	}
-	
+
 	public class Multi {
 
 		private double a;
@@ -259,7 +286,7 @@ public class MainController {
 		}
 
 	}
-	
+
 	public class Division {
 
 		private double a;
